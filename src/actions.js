@@ -1,22 +1,23 @@
 import request from 'superagent'
+import types from './action_types'
 
-export function register(url, email, password) {
+export function login(url, email, password) {
   return {
-    type: 'REGISTER',
+    type: types.LOGIN,
     request: request.post(url).send({email, password}),
   }
 }
 
-export function login(url, email, password) {
+export function register(url, email, password) {
   return {
-    type: 'LOGIN',
+    type: types.REGISTER,
     request: request.post(url).send({email, password}),
   }
 }
 
 export function logout() {
   return {
-    type: 'LOGOUT',
+    type: types.LOGOUT,
     payload: {},
   }
 }
