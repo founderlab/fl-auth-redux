@@ -17,6 +17,16 @@ describe('reducer', () => {
   })
 
 
+  it('should handle LOGOUT', () => {
+    const initial_state = new Immutable.Map()
+    const result = reducer(initial_state, {
+      type: types.LOGOUT,
+    })
+    const expected = new Immutable.Map({})
+    expect(Immutable.is(result, expected)).toBe(true)
+  })
+
+
   it('should handle LOGIN_START', () => {
     const initial_state = new Immutable.Map()
     const result = reducer(initial_state, {
@@ -38,24 +48,36 @@ describe('reducer', () => {
 
   it('should handle LOGIN_ERROR', () => {
     const initial_state = new Immutable.Map()
-    const action = {
+    const error = 'bad things'
+    const actions = [{
       type: types.LOGIN + suffixes.ERROR,
-      error: 'bad things',
-    }
-    const result = reducer(initial_state, action)
-    const expected = new Immutable.Map({loading: false, register_error: null, login_error: action.error})
-    expect(Immutable.is(result, expected)).toBe(true)
+      error,
+    }, {
+      type: types.LOGIN + suffixes.ERROR,
+      res: {body: {error}},
+    }]
+    actions.forEach(action => {
+      const result = reducer(initial_state, action)
+      const expected = new Immutable.Map({loading: false, register_error: null, login_error: error})
+      expect(Immutable.is(result, expected)).toBe(true)
+    })
   })
 
   it('should handle REGISTER_ERROR', () => {
     const initial_state = new Immutable.Map()
-    const action = {
+    const error = 'bad things'
+    const actions = [{
       type: types.REGISTER + suffixes.ERROR,
-      error: 'bad things',
-    }
-    const result = reducer(initial_state, action)
-    const expected = new Immutable.Map({loading: false, register_error: action.error, login_error: null})
-    expect(Immutable.is(result, expected)).toBe(true)
+      error,
+    }, {
+      type: types.REGISTER + suffixes.ERROR,
+      res: {body: {error}},
+    }]
+    actions.forEach(action => {
+      const result = reducer(initial_state, action)
+      const expected = new Immutable.Map({loading: false, register_error: error, login_error: null})
+      expect(Immutable.is(result, expected)).toBe(true)
+    })
   })
 
 
