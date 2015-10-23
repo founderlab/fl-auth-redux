@@ -9,6 +9,9 @@ const suffixes = {
   SUCCESS: '_SUCCESS',
 }
 
+const ACCESS_TOKEN = 'asdf'
+const EMAIL = 'a@example.co'
+
 describe('reducer', () => {
 
 
@@ -85,10 +88,10 @@ describe('reducer', () => {
     const initial_state = new Immutable.Map()
     const action = {
       type: types.LOGIN + suffixes.SUCCESS,
-      res: {body: {user: {email: 'test@example.com'}}},
+      res: {body: {access_token: ACCESS_TOKEN, user: {email: EMAIL}}},
     }
     const result = reducer(initial_state, action)
-    const expected = new Immutable.Map({loading: false, register_error: null, login_error: null, email: action.res.body.user.email})
+    const expected = new Immutable.Map({loading: false, register_error: null, login_error: null, access_token: ACCESS_TOKEN, email: EMAIL})
     expect(Immutable.is(result, expected)).toBe(true)
   })
 
@@ -96,10 +99,10 @@ describe('reducer', () => {
     const initial_state = new Immutable.Map()
     const action = {
       type: types.REGISTER + suffixes.SUCCESS,
-      res: {body: {user: {email: 'test@example.com'}}},
+      res: {body: {access_token: ACCESS_TOKEN, user: {email: EMAIL}}},
     }
     const result = reducer(initial_state, action)
-    const expected = new Immutable.Map({loading: false, register_error: null, login_error: null, email: action.res.body.user.email})
+    const expected = new Immutable.Map({loading: false, register_error: null, login_error: null, access_token: ACCESS_TOKEN, email: EMAIL})
     expect(Immutable.is(result, expected)).toBe(true)
   })
 

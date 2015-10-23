@@ -16,7 +16,13 @@ export default function authReducer(state=default_state, action={}) {
 
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
-      return state.merge({loading: false, login_error: null, register_error: null, email: action.res.body.user.email})
+      return state.merge({
+        loading: false,
+        register_error: null,
+        login_error: null,
+        email: action.res.body.user.email,
+        access_token: action.res.body.access_token,
+      })
 
     case 'LOGOUT':
       return new Immutable.Map()
