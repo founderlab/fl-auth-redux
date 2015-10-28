@@ -1,17 +1,19 @@
 import request from 'superagent'
 import types from './action_types'
 
-export function login(url, email, password) {
+export function login(url, email, password, callback) {
   return {
     type: types.LOGIN,
     request: request.post(url).send({email, password}),
+    callback,
   }
 }
 
-export function register(url, email, password) {
+export function register(url, email, password, callback) {
   return {
     type: types.REGISTER,
     request: request.post(url).send({email, password}),
+    callback,
   }
 }
 
