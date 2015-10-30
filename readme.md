@@ -18,4 +18,5 @@ Usage:
     
     actions.login(url, email, password)
     actions.register(url, email, password)
+    actions.reset(url, email)
 

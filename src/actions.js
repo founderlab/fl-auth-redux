@@ -17,6 +17,14 @@ export function register(url, email, password, callback) {
   }
 }
 
+export function reset(url, email, password, callback) {
+  return {
+    type: types.RESET,
+    request: request.post(url).send({email}),
+    callback,
+  }
+}
+
 export function logout() {
   return {
     type: types.LOGOUT,
@@ -24,4 +32,4 @@ export function logout() {
   }
 }
 
-export default {register, login, logout}
+export default {register, login, reset, logout}
