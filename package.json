@@ -1,6 +1,6 @@
 {
   "name": "fl-auth-redux",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Redux actions + reducer for fl-auth",
   "main": "lib/index.js",
   "author": {
@@ -24,6 +24,7 @@
     "eslint": "^1.5.1",
     "eslint-config-founderlab": "git+https://founderlab-dummy:5901023845@bitbucket.org/founderlab/eslint-config-founderlab",
     "eslint-plugin-react": "^3.4.2",
-    "expect": "^1.12.2"
+    "expect": "^1.12.2",
+    "lodash": "^3.10.1"
   }
 }
