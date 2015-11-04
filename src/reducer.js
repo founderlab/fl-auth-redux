@@ -2,7 +2,7 @@ import Immutable from 'immutable'
 
 const default_state = new Immutable.Map()
 
-export default function authReducer(state=default_state, action={}) {
+export default function reducer(state=default_state, action={}) {
 
   switch (action.type) {
     case 'LOGIN_START':

@@ -1,6 +1,6 @@
 import expect from 'expect'
 import types from '../src/action_types'
-import {actions} from '../src'
+import {login, actions} from '../src'
 
 const URL = 'http://example.com/stuff'
 const EMAIL = 'a@example.com'
@@ -9,7 +9,7 @@ const RESET_TOKEN = '098'
 
 describe('actions', () => {
 
-  it('should create an action to login', () => {
+  it('should create an action to login (specific import)', () => {
     const expected = {
       type: types.LOGIN,
       request: {
@@ -20,14 +20,14 @@ describe('actions', () => {
         },
       },
     }
-    const action = actions.login(URL, EMAIL, PASSWORD)
+    const action = login(URL, EMAIL, PASSWORD)
     expect(action.type).toEqual(expected.type)
     expect(action.request.url).toEqual(expected.request.url)
     expect(action.request._data.email).toEqual(expected.request.body.email)
     expect(action.request._data.password).toEqual(expected.request.body.password)
   })
 
-  it('should create an action to register', () => {
+  it('should create an action to register (actions import)', () => {
     const expected = {
       type: types.REGISTER,
       request: {
