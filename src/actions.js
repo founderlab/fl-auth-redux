@@ -9,10 +9,10 @@ export function login(url, email, password, callback) {
   }
 }
 
-export function register(url, email, password, callback) {
+export function register(url, data, callback) {
   return {
     type: types.REGISTER,
-    request: request.post(url).send({email, password}),
+    request: request.post(url).send(data),
     callback,
   }
 }
@@ -29,6 +29,14 @@ export function resetRequest(url, email, callback) {
   return {
     type: types.RESET_REQUEST,
     request: request.post(url).send({email}),
+    callback,
+  }
+}
+
+export function confirmEmail(url, email, token, callback) {
+  return {
+    type: types.CONFIRM_EMAIL,
+    request: request.post(url).send({email, token}),
     callback,
   }
 }
