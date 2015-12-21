@@ -29,7 +29,7 @@ export default function reducer(state=default_state, action={}) {
       return state.merge({
         loading: false,
         errors: null,
-        email: action.res.body.user.email,
+        user: action.res.body.user,
         access_token: action.res.body.access_token,
       })
     case 'RESET_REQUEST_SUCCESS':
