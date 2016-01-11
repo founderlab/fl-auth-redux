@@ -1,5 +1,15 @@
 # Auth package for FounderLab apps
 
+Contains redux actions and a reducer to go with fl-auth-server and fl-auth-react.
+
+Also contains:
+
+####accessTokenMiddleware
+Appends an access token to each request as a query string or header.
+
+###requestLoggerMiddleware
+Auto logs all rewuests to the console.
+
 Usage: 
 
     // add to your reducers    
@@ -20,3 +30,9 @@ Usage:
     actions.register(url, email, password)
     actions.reset(url, email)
 
+
+Changes: 
+
+- 0.3.0: Added accessTokenMiddleware and requestLoggerMiddleware
+- 0.2.0: Module refactor
+- 0.1.0: Initial release
