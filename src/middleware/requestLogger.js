@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import _ from 'lodash'
 
 const defaults = {
   getRequest: action => action.request,
@@ -6,7 +6,7 @@ const defaults = {
 }
 
 export function createRequestLoggerMiddleware(_options={}) {
-  const options = merge(defaults, _options)
+  const options = _.merge(defaults, _options)
 
   return function requestLoggerMiddleware() {
     return next => action => {
