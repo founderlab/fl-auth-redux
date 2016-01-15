@@ -45,6 +45,11 @@ export default function reducer(state=default_state, action={}) {
         email_confirmed: true,
       })
 
+    case 'USER_UPDATE':
+      return state.mergeDeep({
+        user: action.user,
+      })
+
     case 'LOGOUT':
       return new Immutable.Map()
 
