@@ -33,6 +33,7 @@ Usage:
 
 Changes: 
 
+- 0.3.1: Added updateUser to synchronously update the user model
 - 0.3.0: Added accessTokenMiddleware and requestLoggerMiddleware
 - 0.2.0: Module refactor
 - 0.1.0: Initial release
