@@ -48,4 +48,11 @@ export function logout() {
   }
 }
 
-export default {register, login, reset, resetRequest, logout}
+export function updateUser(user) {
+  return {
+    user,
+    type: types.USER_UPDATE,
+  }
+}
+
+export default {register, login, reset, resetRequest, logout, updateUser}
