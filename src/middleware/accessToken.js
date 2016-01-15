@@ -10,7 +10,7 @@
 //  appendToken(request, token):  Function to append a token to the request. Builtin options are appendTokenHeader and appendTokenQuery
 //                    appendTokenHeader (default): token is added to the request header as a bearer token with `request.set({authorization: `Bearer ${access_token}`})`
 //                    appendTokenQuery: token is added to the query string as `request.query({$access_token: access_token})`
-import merge from 'lodash/object/merge'
+import _ from 'lodash'
 
 export function getToken(store) {
   const auth = store.getState().auth
@@ -35,7 +35,7 @@ const defaults = {
 }
 
 export function createAccessTokenMiddleware(_options={}) {
-  const options = merge(defaults, _options)
+  const options = _.merge(defaults, _options)
 
   return function accessTokenMiddleware(store) {
     return next => action => {
