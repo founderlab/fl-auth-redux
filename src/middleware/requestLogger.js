@@ -2,7 +2,9 @@ import _ from 'lodash'
 
 const defaults = {
   getRequest: action => action.request,
-  log: request => console.log('::', request.method, request.url, request),
+  logRequest: request => console.log('[request]', request.method, request.url, request),
+  getResponse: action => action.res,
+  logResponse: response => console.log('[response]', response),
 }
 
 export function createRequestLoggerMiddleware(_options={}) {
@@ -11,7 +13,9 @@ export function createRequestLoggerMiddleware(_options={}) {
   return function requestLoggerMiddleware() {
     return next => action => {
       const request = options.getRequest(action)
-      if (request) options.log(request)
+      if (request) options.logRequest(request)
+      const response = options.getResponse(action)
+      if (response) options.logResponse(response)
       next(action)
     }
   }
