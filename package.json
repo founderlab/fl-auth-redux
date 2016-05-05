@@ -1,6 +1,6 @@
 {
   "name": "fl-auth-redux",
-  "version": "0.3.2",
+  "version": "0.3.1",
   "description": "Redux actions + reducer for fl-auth",
   "main": "lib/index.js",
   "author": {
@@ -20,6 +20,11 @@
     "moment": "^2.10.6",
     "superagent": "0.18.0",
     "lodash": "^4.0.0"
+  },
+  "// wouldBePeerDependencies": {
+    "react": "*",
+    "react-bootstrap": "*",
+    "redux-form": "*"
   },
   "devDependencies": {
     "babel": "^5.6.14",

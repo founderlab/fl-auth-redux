@@ -7,9 +7,6 @@ Also contains:
 ####accessTokenMiddleware
 Appends an access token to each request as a query string or header.
 
-###requestLoggerMiddleware
-Auto logs all rewuests to the console.
-
 Usage: 
 
     // add to your reducers    
@@ -33,6 +30,7 @@ Usage:
 
 Changes: 
 
+- 0.4.0: Made public, moved requestLoggerMiddleware to fl-react-utils
 - 0.3.1: Added updateUser to synchronously update the user model
 - 0.3.0: Added accessTokenMiddleware and requestLoggerMiddleware
 - 0.2.0: Module refactor
