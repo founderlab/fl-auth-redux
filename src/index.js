@@ -11,7 +11,6 @@ export {
   types,
   accessTokenMiddleware,
   createAccessTokenMiddleware,
-  createRequestLoggerMiddleware,
 }
 export default {
   actions,
@@ -19,5 +18,4 @@ export default {
   types,
   accessTokenMiddleware,
   createAccessTokenMiddleware,
-  createRequestLoggerMiddleware,
 }

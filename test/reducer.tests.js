@@ -30,7 +30,7 @@ describe('reducer', () => {
     expect(Immutable.is(result, expected)).toBe(true)
   })
 
-  it('Should harndle *_START actions', () => {
+  it('Should handle *_START actions', () => {
     _.forEach(types, type => {
       if (type === 'LOGOUT') return
       const initial_state = new Immutable.Map()

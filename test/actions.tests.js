@@ -38,7 +38,7 @@ describe('actions', () => {
         },
       },
     }
-    const action = actions.register(URL, EMAIL, PASSWORD)
+    const action = actions.register(URL, {email: EMAIL, password: PASSWORD})
     expect(action.type).toEqual(expected.type)
     expect(action.request.url).toEqual(expected.request.url)
     expect(action.request._data.email).toEqual(expected.request.body.email)

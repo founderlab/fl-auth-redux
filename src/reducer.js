@@ -10,6 +10,7 @@ export default function reducer(state=default_state, action={}) {
     case 'RESET_START':
     case 'RESET_REQUEST_START':
     case 'CONFIRM_EMAIL_START':
+    case 'USER_UPDATE_START':
       return state.merge({loading: true, errors: null, reset_email_sent: false})
 
     case 'LOGIN_ERROR':
@@ -22,6 +23,8 @@ export default function reducer(state=default_state, action={}) {
       return state.merge({loading: false, errors: {reset_request: action.error || action.res.body.error}})
     case 'CONFIRM_EMAIL_ERROR':
       return state.merge({loading: false, errors: {email_confirm: action.error || action.res.body.error}})
+    case 'USER_UPDATE_ERROR':
+      return state.merge({loading: false, errors: {update: action.error || action.res.body.error}})
 
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
@@ -45,8 +48,10 @@ export default function reducer(state=default_state, action={}) {
         email_confirmed: true,
       })
 
-    case 'USER_UPDATE':
+    case 'USER_UPDATE_SUCCESS':
       return state.mergeDeep({
+        loading: false,
+        errors: null,
         user: action.user,
       })
 
