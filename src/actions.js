@@ -48,10 +48,11 @@ export function logout() {
   }
 }
 
-export function updateUser(user) {
+export function updateUser(user, callback) {
   return {
     user,
     type: types.USER_UPDATE,
+    callback,
   }
 }
 

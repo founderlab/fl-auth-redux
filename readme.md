@@ -1,14 +1,44 @@
-# Auth package for FounderLab apps
+Redux actions and reducer for fl-auth-*, an package for FounderLab apps
+=======================================================================
 
-Contains redux actions and a reducer to go with fl-auth-server and fl-auth-react.
+Works alongside fl-auth-server and fl-auth-react.
 
-Also contains:
 
-####accessTokenMiddleware
+Actions
+-------
+
+- login(url, email, password, callback)
+    * Send a login request with the given email(username) and password to url.
+
+- register(url, user_data, callback)
+    * Send a register request with the given data to url.
+    * user_data should contain the fields {email, password} at minimum
+
+- resetRequest(url, email, callback)
+    * Send a password reset email to the user who registered the email `email`
+
+- reset(url, email, password, reset_token, callback)
+    * Perform the password reset for a user that has requested a reset via resetRequest
+    * reset_token will be present as a query param in a link from email they receive. Make sure it's picked up and passed along
+
+- confirmEmail(url, email, token, callback)
+    * Used when the user receives their email confirmation email. Pass the token back to the server.
+
+- logout()
+    * Clear the user's session and log them out.
+
+- updateUser(user, callback)
+    * Make changes to the user model directly.
+
+
+accessTokenMiddleware
+---------------------
+
 Appends an access token to each request as a query string or header.
 
-Usage: 
 
+Usage: 
+------
     // add to your reducers    
     import {reducer as auth} from 'fl-auth-redux'
 
@@ -20,11 +50,11 @@ Usage:
     ...
 
 
-    // send login / register actions
-    import {actions as auth_actions} from 'fl-auth-redux'
+    // use the login, register actions from your components
+    import {actions} from 'fl-auth-redux'
     
     actions.login(url, email, password)
-    actions.register(url, email, password)
+    actions.register(url, user_data, password)
     actions.reset(url, email)
 
 
