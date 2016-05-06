@@ -63,8 +63,7 @@ describe('reducer', () => {
   })
 
   it('Should handle *_SUCCESS login actions', () => {
-    _.forEach(types, type => {
-      if (type === 'LOGOUT' || type === 'RESET_REQUEST') return
+    _.forEach(['LOGIN', 'REGISTER', 'RESET'], type => {
 
       const initial_state = new Immutable.Map()
       const action = {
@@ -72,7 +71,8 @@ describe('reducer', () => {
         res: {body: {access_token: ACCESS_TOKEN, user: {email: EMAIL}}},
       }
       const result = reducer(initial_state, action)
-      const expected = fromJS({loading: false, errors: null, access_token: ACCESS_TOKEN, email: EMAIL})
+      const expected = fromJS({loading: false, errors: null, access_token: ACCESS_TOKEN, user: {email: EMAIL}})
+
       expect(Immutable.is(result, expected)).toBe(true, `${type}_SUCCESS works for ${JSON.stringify(action)}`)
 
     })

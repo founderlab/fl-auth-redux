@@ -22,9 +22,9 @@ export default function reducer(state=default_state, action={}) {
     case 'RESET_REQUEST_ERROR':
       return state.merge({loading: false, errors: {reset_request: action.error || action.res.body.error}})
     case 'CONFIRM_EMAIL_ERROR':
-      return state.merge({loading: false, errors: {email_confirm: action.error || action.res.body.error}})
+      return state.merge({loading: false, errors: {confirm_email: action.error || action.res.body.error}})
     case 'USER_UPDATE_ERROR':
-      return state.merge({loading: false, errors: {update: action.error || action.res.body.error}})
+      return state.merge({loading: false, errors: {user_update: action.error || action.res.body.error}})
 
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
@@ -52,7 +52,7 @@ export default function reducer(state=default_state, action={}) {
       return state.mergeDeep({
         loading: false,
         errors: null,
-        user: action.user,
+        user: action.model,
       })
 
     case 'LOGOUT':
