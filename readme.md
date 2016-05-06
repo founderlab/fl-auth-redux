@@ -1,4 +1,4 @@
-Redux actions and reducer for fl-auth-*, an package for FounderLab apps
+Redux actions and reducer for fl-auth-*, an auth package for FounderLab apps
 =======================================================================
 
 Works alongside fl-auth-server and fl-auth-react.
