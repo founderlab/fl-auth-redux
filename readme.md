@@ -60,7 +60,7 @@ Usage:
 
 Changes: 
 
-- 0.4.0: Made public, moved requestLoggerMiddleware to fl-react-utils
+- 0.4.0: Made public, moved requestLoggerMiddleware to fl-react-utils, updateUser is now a proper async function
 - 0.3.1: Added updateUser to synchronously update the user model
 - 0.3.0: Added accessTokenMiddleware and requestLoggerMiddleware
 - 0.2.0: Module refactor
