@@ -1,8 +1,8 @@
 import Immutable from 'immutable'
 
-const default_state = new Immutable.Map()
+const defaultState = new Immutable.Map()
 
-export default function reducer(state=default_state, action={}) {
+export default function reducer(state=defaultState, action={}) {
 
   switch (action.type) {
     case 'LOGIN_START':
@@ -11,7 +11,7 @@ export default function reducer(state=default_state, action={}) {
     case 'RESET_REQUEST_START':
     case 'CONFIRM_EMAIL_START':
     case 'USER_UPDATE_START':
-      return state.merge({loading: true, errors: null, reset_email_sent: false})
+      return state.merge({loading: true, errors: null, resetEmailSent: false})
 
     case 'LOGIN_ERROR':
       return state.merge({loading: false, errors: {login: action.error || action.res.body.error}})
@@ -24,7 +24,7 @@ export default function reducer(state=default_state, action={}) {
     case 'CONFIRM_EMAIL_ERROR':
       return state.merge({loading: false, errors: {confirm_email: action.error || action.res.body.error}})
     case 'USER_UPDATE_ERROR':
-      return state.merge({loading: false, errors: {user_update: action.error || action.res.body.error}})
+      return state.merge({loading: false, errors: {userUpdate: action.error || action.res.body.error}})
 
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
@@ -33,19 +33,19 @@ export default function reducer(state=default_state, action={}) {
         loading: false,
         errors: null,
         user: action.res.body.user,
-        access_token: action.res.body.access_token,
+        accessToken: action.res.body.accessToken,
       })
     case 'RESET_REQUEST_SUCCESS':
       return state.merge({
         loading: false,
         errors: null,
-        reset_email_sent: true,
+        resetEmailSent: true,
       })
     case 'CONFIRM_EMAIL_SUCCESS':
       return state.merge({
         loading: false,
         errors: null,
-        email_confirmed: true,
+        emailConfirmed: true,
       })
 
     case 'USER_UPDATE_SUCCESS':

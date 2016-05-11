@@ -17,10 +17,10 @@ export function register(url, data, callback) {
   }
 }
 
-export function reset(url, email, password, reset_token, callback) {
+export function reset(url, email, password, resetToken, callback) {
   return {
     type: types.RESET,
-    request: request.post(url).send({email, password, reset_token}),
+    request: request.post(url).send({email, password, resetToken}),
     callback,
   }
 }

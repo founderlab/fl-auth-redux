@@ -8,23 +8,23 @@
 //  getToken(store):              A function that returns an access token given a redux store.
 //                                By default it'll look for it on a property called `auth`.
 //  appendToken(request, token):  Function to append a token to the request. Builtin options are appendTokenHeader and appendTokenQuery
-//                    appendTokenHeader (default): token is added to the request header as a bearer token with `request.set({authorization: `Bearer ${access_token}`})`
-//                    appendTokenQuery: token is added to the query string as `request.query({$access_token: access_token})`
+//                    appendTokenHeader (default): token is added to the request header as a bearer token with `request.set({authorization: `Bearer ${accessToken}`})`
+//                    appendTokenQuery: token is added to the query string as `request.query({$accessToken: accessToken})`
 import _ from 'lodash'
 
 export function getToken(store) {
   const auth = store.getState().auth
   if (!auth) return null
-  return auth.get ? auth.get('access_token') : auth.access_token
+  return auth.get ? auth.get('accessToken') : auth.accessToken
 }
 
-export function appendTokenHeader(request, access_token) {
-  request.set({authorization: `Bearer ${access_token}`})
+export function appendTokenHeader(request, accessToken) {
+  request.set({authorization: `Bearer ${accessToken}`})
   return request
 }
 
-export function appendTokenQuery(request, access_token) {
-  request.query({$access_token: access_token})
+export function appendTokenQuery(request, accessToken) {
+  request.query({$accessToken: accessToken})
   return request
 }
 
@@ -41,8 +41,8 @@ export function createAccessTokenMiddleware(_options={}) {
     return next => action => {
 
       const request = options.getRequest(action)
-      const access_token = options.getToken(store)
-      if (request && access_token) options.appendToken(request, access_token)
+      const accessToken = options.getToken(store)
+      if (request && accessToken) options.appendToken(request, accessToken)
       next(action)
     }
   }

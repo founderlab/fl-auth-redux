@@ -53,7 +53,7 @@ describe('actions', () => {
         body: {
           email: EMAIL,
           password: PASSWORD,
-          reset_token: RESET_TOKEN,
+          resetToken: RESET_TOKEN,
         },
       },
     }
@@ -62,7 +62,7 @@ describe('actions', () => {
     expect(action.request.url).toEqual(expected.request.url)
     expect(action.request._data.email).toEqual(expected.request.body.email)
     expect(action.request._data.password).toEqual(expected.request.body.password)
-    expect(action.request._data.reset_token).toEqual(expected.request.body.reset_token)
+    expect(action.request._data.resetToken).toEqual(expected.request.body.resetToken)
   })
 
   it('should create an action to request a password reset', () => {

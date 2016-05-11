@@ -22,8 +22,8 @@ describe('reducer', () => {
 
 
   it('should handle LOGOUT', () => {
-    const initial_state = new Immutable.Map()
-    const result = reducer(initial_state, {
+    const initialState = new Immutable.Map()
+    const result = reducer(initialState, {
       type: types.LOGOUT,
     })
     const expected = new Immutable.Map({})
@@ -33,11 +33,11 @@ describe('reducer', () => {
   it('Should handle *_START actions', () => {
     _.forEach(types, type => {
       if (type === 'LOGOUT') return
-      const initial_state = new Immutable.Map()
-      const result = reducer(initial_state, {
+      const initialState = new Immutable.Map()
+      const result = reducer(initialState, {
         type: type + suffixes.START,
       })
-      const expected = new Immutable.Map({loading: true, errors: null, reset_email_sent: false})
+      const expected = new Immutable.Map({loading: true, errors: null, resetEmailSent: false})
       expect(Immutable.is(result, expected)).toBe(true, `${type}_START works`)
     })
   })
@@ -45,7 +45,7 @@ describe('reducer', () => {
   it('Should handle *_ERROR actions', () => {
     _.forEach(types, type => {
       if (type === 'LOGOUT') return
-      const initial_state = new Immutable.Map()
+      const initialState = new Immutable.Map()
       const error = 'bad things'
       const actions = [{
         type: type + suffixes.ERROR,
@@ -55,7 +55,7 @@ describe('reducer', () => {
         res: {body: {error}},
       }]
       actions.forEach(action => {
-        const result = reducer(initial_state, action)
+        const result = reducer(initialState, action)
         const expected = fromJS({loading: false, errors: {[type.toLowerCase()]: error}})
         expect(Immutable.is(result, expected)).toBe(true, `${type}_ERROR works for ${JSON.stringify(action)}`)
       })
@@ -65,13 +65,13 @@ describe('reducer', () => {
   it('Should handle *_SUCCESS login actions', () => {
     _.forEach(['LOGIN', 'REGISTER', 'RESET'], type => {
 
-      const initial_state = new Immutable.Map()
+      const initialState = new Immutable.Map()
       const action = {
         type: type + suffixes.SUCCESS,
-        res: {body: {access_token: ACCESS_TOKEN, user: {email: EMAIL}}},
+        res: {body: {accessToken: ACCESS_TOKEN, user: {email: EMAIL}}},
       }
-      const result = reducer(initial_state, action)
-      const expected = fromJS({loading: false, errors: null, access_token: ACCESS_TOKEN, user: {email: EMAIL}})
+      const result = reducer(initialState, action)
+      const expected = fromJS({loading: false, errors: null, accessToken: ACCESS_TOKEN, user: {email: EMAIL}})
 
       expect(Immutable.is(result, expected)).toBe(true, `${type}_SUCCESS works for ${JSON.stringify(action)}`)
 
@@ -79,13 +79,13 @@ describe('reducer', () => {
   })
 
   it('should handle RESET_REQUEST_SUCCESS', () => {
-    const initial_state = new Immutable.Map()
+    const initialState = new Immutable.Map()
     const action = {
       type: types.RESET_REQUEST + suffixes.SUCCESS,
       res: {body: {}},
     }
-    const result = reducer(initial_state, action)
-    const expected = fromJS({loading: false, errors: null, reset_email_sent: true})
+    const result = reducer(initialState, action)
+    const expected = fromJS({loading: false, errors: null, resetEmailSent: true})
     expect(Immutable.is(result, expected)).toBe(true)
   })
 
