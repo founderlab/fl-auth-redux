@@ -1,9 +1,12 @@
 
 ## [Unreleased]
-  
+
+
+## [0.11.0]
+ - Migrated to Babel 6
 
 ## [0.10.0]
- - Code style switched to camelCase for variables. 
+ - Code style switched to camelCase for variables.
  - Frameworkstein initial release.
 
 ## [0.4.0]
