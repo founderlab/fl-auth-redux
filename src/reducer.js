@@ -1,6 +1,9 @@
-import Immutable from 'immutable'
+import Immutable, {fromJS} from 'immutable'
 
-const defaultState = new Immutable.Map()
+const defaultState = fromJS({
+  loading: false,
+  errors: {},
+})
 
 export default function reducer(state=defaultState, action={}) {
 
@@ -11,7 +14,7 @@ export default function reducer(state=defaultState, action={}) {
     case 'RESET_REQUEST_START':
     case 'CONFIRM_EMAIL_START':
     case 'USER_UPDATE_START':
-      return state.merge({loading: true, errors: null, resetEmailSent: false})
+      return state.merge({loading: true, errors: {}, resetEmailSent: false})
 
     case 'LOGIN_ERROR':
       return state.merge({loading: false, errors: {login: action.error || action.res.body.error}})
@@ -31,27 +34,27 @@ export default function reducer(state=defaultState, action={}) {
     case 'RESET_SUCCESS':
       return state.merge({
         loading: false,
-        errors: null,
+        errors: {},
         user: action.res.body.user,
         accessToken: action.res.body.accessToken,
       })
     case 'RESET_REQUEST_SUCCESS':
       return state.merge({
         loading: false,
-        errors: null,
+        errors: {},
         resetEmailSent: true,
       })
     case 'CONFIRM_EMAIL_SUCCESS':
       return state.merge({
         loading: false,
-        errors: null,
+        errors: {},
         emailConfirmed: true,
       })
 
     case 'USER_UPDATE_SUCCESS':
       return state.mergeDeep({
         loading: false,
-        errors: null,
+        errors: {},
         user: action.model,
       })
 
