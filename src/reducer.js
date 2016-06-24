@@ -59,7 +59,7 @@ export default function reducer(state=defaultState, action={}) {
       })
 
     case 'LOGOUT':
-      return new Immutable.Map()
+      return defaultState
 
     default:
       return state

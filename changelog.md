@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+## [0.11.3]
+ - Logout reverts state to the default state (not an empty map)
+
 ## [0.11.1]
  - Back to Babel 5
 
