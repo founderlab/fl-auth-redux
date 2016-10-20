@@ -1,4 +1,4 @@
-import Immutable, {fromJS} from 'immutable'
+import {fromJS} from 'immutable'
 
 const defaultState = fromJS({
   loading: false,
@@ -23,9 +23,9 @@ export default function reducer(state=defaultState, action={}) {
     case 'RESET_ERROR':
       return state.merge({loading: false, errors: {reset: action.error || action.res.body.error}})
     case 'RESET_REQUEST_ERROR':
-      return state.merge({loading: false, errors: {reset_request: action.error || action.res.body.error}})
+      return state.merge({loading: false, errors: {resetRequest: action.error || action.res.body.error}})
     case 'CONFIRM_EMAIL_ERROR':
-      return state.merge({loading: false, errors: {confirm_email: action.error || action.res.body.error}})
+      return state.merge({loading: false, errors: {confirmEmail: action.error || action.res.body.error}})
     case 'USER_UPDATE_ERROR':
       return state.merge({loading: false, errors: {userUpdate: action.error || action.res.body.error}})
 
