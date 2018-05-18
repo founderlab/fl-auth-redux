@@ -1,3 +1,12 @@
+## This package has moved to the [Frameworkstein repository](https://github.com/founderlab/frameworkstein/tree/master/packages/fl-auth-redux)
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 Redux actions and reducer for fl-auth-*, an auth package for FounderLab apps
 =======================================================================
 
